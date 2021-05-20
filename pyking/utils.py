@@ -1,6 +1,4 @@
-from . import *
-from telethon import *
-from sys import *
+from pyking import *
 
 
 def load_plugins(plugin_name):
@@ -23,7 +21,7 @@ def load_plugins(plugin_name):
             asst_cmd,
             callback,
             inline,
-            inline_owner,
+            in_owner,
             in_pattern,
         )
         from .misc._wrappers import eod, eor
@@ -43,7 +41,7 @@ def load_plugins(plugin_name):
         mod.bot = king_bot
         mod.ultroid = king_bot
         mod.owner = owner()
-        mod.in_owner = inline_owner()
+        mod.in_owner = in_owner()
         mod.inline = inline()
         mod.in_pattern = in_pattern
         mod.eod = eod
@@ -97,7 +95,7 @@ def load_addons(plugin_name):
             asst_cmd,
             callback,
             inline,
-            inline_owner,
+            in_owner,
             in_pattern,
         )
         from .misc._wrappers import eod, eor
@@ -123,7 +121,7 @@ def load_addons(plugin_name):
         mod.jarvis = king_bot
         mod.friday = king_bot
         mod.owner = owner()
-        mod.in_owner = inline_owner()
+        mod.in_owner = in_owner()
         mod.inline = inline()
         mod.eod = eod
         mod.edit_delete = eod
@@ -190,7 +188,7 @@ def load_assistant(plugin_name):
     else:
         import importlib
         import sys
-        from .misc._assistant import owner, asst_cmd, callback, inline_owner, in_pattern
+        from .misc._assistant import owner, asst_cmd, callback, in_owner, in_pattern
         from .misc._wrappers import eod, eor
         from pathlib import Path
         from .dB.database import Var
@@ -205,7 +203,7 @@ def load_assistant(plugin_name):
         mod.asst = king_bot.asst
         mod.owner = owner()
         mod.in_pattern = in_pattern
-        mod.in_owner = inline_owner()
+        mod.in_owner = in_owner()
         mod.eod = eod
         mod.eor = eor
         mod.callback = callback
