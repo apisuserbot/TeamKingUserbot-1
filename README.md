@@ -1,12 +1,12 @@
 <a href="https://cooltext.com"><img src="https://images.cooltext.com/5520759.gif" width="802" height="96" alt="King Userbot" /></a>
 
 <p align="center">
-  <a href="https://github.com/TeamKingUserbot/TeamKing-Userbot/fork">
-    <img src="https://img.shields.io/github/forks/TeamKingUserbot/TeamKing-Userbot?label=Fork&style=social">
+  <a href="https://github.com/TeamKingUserbot/TeamKingUserbot/fork">
+    <img src="https://img.shields.io/github/forks/TeamKingUserbot/TeamKingUserbot?label=Fork&style=social">
     
   </a>
-  <a href="https://github.com/DoellBarr/TeamKing-Userbot">
-    <img src="https://img.shields.io/github/stars/DoellBarr/TeamKing-Userbot?style=social">
+  <a href="https://github.com/TeamKingUserbot/TeamKingUserbot">
+    <img src="https://img.shields.io/github/stars/TeamKingUserbot/TeamKingUserbot?style=social">
   </a>
 </p>  
 
