@@ -8,27 +8,27 @@
 """
 ✘ Commands Available
 
-•`{i}peringatan <balas ke pengguna> <alasan>`
+•`{i}warn <balas ke pengguna/berikan username> <alasan>`
     Memberi Peringatan.
 
-•`{i}reset peringatan <balas ke pengguna>`
+•`{i}resetwarn <balas ke pengguna/berikan username>`
     Atau mereset semua peringatan.
 
-•`{i}memperingatkan <balas ke pengguna>`
+•`{i}wanrns <balas ke pengguna/berikan username>`
    Untuk Mendapatkan Daftar Peringatan dari pengguna.
 
-•`{i}set peringatan dengan .warn <memperingatkan hitungan> | <ban/mute/kick>`
-   Atur Nomor dalam hitungan peringatan untuk peringatan
+•`{i}set warn dengan .set warn <banyaknya peringatan> | <ban/mute/kick>`
+   Atur banyaknya peringatan setelah kata warn
    Setelah meletakkan " | " tandai menempatkan tindakan seperti ban/mute/kick
-   Default-nya 3 kick
-   Contoh : `set 5 peringatan | mute`
+   Default-nya adalah .set warn 3 kick
+   Contoh : `set warn 5 | mute`
 
 """
 
 from pyking.functions.warn_db import *
 from telethon.utils import get_display_name
 
-from . import *
+from pyking import *
 
 
 @king_cmd(pattern="warn ?(.*)", groups_only=True, admins_only=True)
@@ -39,7 +39,7 @@ async def warn(e):
             return
     if reply:
         user = reply.from_id.user_id
-        reason = "tidak dikenal"
+        reason = "Tidak diketahui"
         if e.pattern_match.group(1):
             reason = e.text[5:]
     else:
@@ -51,11 +51,11 @@ async def warn(e):
             else:
                 user = int(user)
         except BaseException:
-            return await eod(e, "Reply To A User")
+            return await eod(e, "Balas ke pengguna")
         try:
             reason = e.text.split(maxsplit=2)[-1]
         except BaseException:
-            reason = "tidak dikenal"
+            reason = "Tidak diketahui"
     count, r = warns(e.chat_id, user)
     if not r:
         r = reason
@@ -71,17 +71,17 @@ async def warn(e):
     if count + 1 >= number:
         if "ban" in action:
             try:
-                await ultroid_bot.edit_permissions(e.chat_id, user, view_messages=False)
+                await king_bot.edit_permissions(e.chat_id, user, view_messages=False)
             except BaseException:
                 return await eod(e, "`Ada yang salah.`")
         elif "kick" in action:
             try:
-                await ultroid_bot.kick_participant(e.chat_id, user)
+                await king_bot.kick_participant(e.chat_id, user)
             except BaseException:
                 return await eod(e, "`Ada yang salah.`")
         elif "mute" in action:
             try:
-                await ultroid_bot.edit_permissions(
+                await king_bot.edit_permissions(
                     e.chat_id, user, until_date=None, send_messages=False
                 )
             except BaseException:
